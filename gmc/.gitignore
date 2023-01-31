@@ -127,18 +127,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# coot
-coot-videotext/data
-coot-videotext/experiments
-
-# gmc
-gmc/gmc_code/supervised_dmm/wandb
-gmc/gmc_code/supervised_dmm/dataset
-gmc/gmc_code/supervised_dmm/evaluation
-
-gmc/gmc_code/supervised_mix/wandb
-gmc/gmc_code/supervised_mix/dataset
-gmc/gmc_code/supervised_mix/evaluation
-
-gmc/gmc_code/unsupervised/dataset

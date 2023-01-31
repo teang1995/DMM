@@ -1,0 +1,49 @@
+Seed:  0
+Test Modality:  all
+MAE:  1.0473361
+Correlation Coefficient:  0.6027830613531643
+F1 score:  0.7439807132346036
+Accuracy:  0.7423780487804879
+--------------------------------------------------
+Seed:  0
+Test Modality:  all
+MAE:  1.4391937
+Correlation Coefficient:  0.18882887205167417
+F1 score:  0.5721747659228789
+Accuracy:  0.5594512195121951
+--------------------------------------------------
+Seed:  0
+Test Modality:  all
+MAE:  1.4253623
+Correlation Coefficient:  0.15827247362411012
+F1 score:  0.5301209323497723
+Accuracy:  0.5274390243902439
+--------------------------------------------------
+Seed:  0
+Test Modality:  all
+MAE:  0.9531433
+Correlation Coefficient:  0.6636853687031654
+F1 score:  0.7884961112757702
+Accuracy:  0.788109756097561
+--------------------------------------------------
+Seed:  0
+Test Modality:  all
+MAE:  1.0847925
+Correlation Coefficient:  0.601822206162709
+F1 score:  0.7408677584718958
+Accuracy:  0.7423780487804879
+--------------------------------------------------
+Seed:  0
+Test Modality:  all
+MAE:  1.4164459
+Correlation Coefficient:  0.19998677486206837
+F1 score:  0.5672175270737503
+Accuracy:  0.5564024390243902
+--------------------------------------------------
+Seed:  0
+Test Modality:  all
+MAE:  1.0827593
+Correlation Coefficient:  0.5874871146963212
+F1 score:  0.732702203061605
+Accuracy:  0.7332317073170732
+--------------------------------------------------

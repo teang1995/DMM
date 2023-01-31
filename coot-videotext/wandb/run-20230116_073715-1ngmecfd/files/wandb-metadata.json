@@ -1,0 +1,31 @@
+{
+    "os": "Linux-5.4.0-81-generic-x86_64-with-glibc2.31",
+    "python": "3.9.12",
+    "heartbeatAt": "2023-01-16T07:37:17.056860",
+    "startedAt": "2023-01-16T07:37:15.801714",
+    "docker": null,
+    "gpu": "NVIDIA RTX A6000",
+    "gpu_count": 8,
+    "cpu_count": 40,
+    "cuda": null,
+    "args": [
+        "-c",
+        "provided_experiments/retrieval/paper2020/anet_coot_run1/config.yaml",
+        "--seed=1002",
+        "--is_baseline=True",
+        "-r",
+        "final-ac-base-1002"
+    ],
+    "state": "running",
+    "program": "/home/teang1995/codes/coot-videotext/train_retrieval.py",
+    "codePath": "train_retrieval.py",
+    "git": {
+        "remote": "https://github.com/gingsi/coot-videotext.git",
+        "commit": "14ae4ac6ae11b3a7e6c339731a1c7b9ebffa763c"
+    },
+    "email": "teang1995@ajou.ac.kr",
+    "root": "/home/teang1995/codes/coot-videotext",
+    "host": "gpusystem",
+    "username": "teang1995",
+    "executable": "/data/teang1995/.conda/envs/coot3/bin/python3"
+}

@@ -4,7 +4,7 @@ astroid==2.13.2
 attrs==22.2.0
 brotlipy==0.7.0
 cachetools==5.2.1
-certifi==2022.5.18.1
+certifi==2022.12.7
 cffi==1.15.0
 charset-normalizer==2.0.4
 click==8.1.3

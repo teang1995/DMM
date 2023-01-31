@@ -46,7 +46,7 @@ oauthlib==3.2.2
 packaging==23.0
 pathspec==0.10.3
 pathtools==0.1.2
-pillow==9.0.1
+pillow==9.3.0
 pip==21.2.4
 platformdirs==2.6.2
 pluggy==1.0.0

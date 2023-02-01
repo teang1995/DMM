@@ -7,7 +7,7 @@ GPUtil==1.4.0
 h5py==3.1.0
 idna==2.10
 iniconfig==1.1.1
-joblib==1.0.0
+joblib==1.2.0
 mkl-fft==1.2.0
 mkl-random==1.1.1
 mkl-service==2.3.0

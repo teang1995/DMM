@@ -72,7 +72,6 @@ class RetrievalTrainer(trainer_base.BaseTrainer):
 
         # overwrite default state with inherited trainer state in case we need additional state fields
         self.state = RetrievalTrainerState()
-        # TODO: config에서 is_baseline값 받아오는 법을 찾는다.
         self.is_baseline = True if str(is_baseline).lower() == 'true' else False
         print('will use baseline?: ', self.is_baseline)
         # ---------- loss ----------
@@ -176,7 +175,7 @@ class RetrievalTrainer(trainer_base.BaseTrainer):
         if cfg.weight_high != 0:
             loss += cfg.weight_high * self.compute_align_loss(vid_emb_norm, par_emb_norm)
         if cfg.weight_low != 0:
-            loss += cfg.weight_low * self.compute_align_loss(clip_emb_norm, sent_emb_norm) * 0
+            loss += cfg.weight_low * self.compute_align_loss(clip_emb_norm, sent_emb_norm)
         if cfg.weight_context != 0:
             loss += cfg.weight_context * self.compute_align_loss(vid_context_norm, par_context_norm)
         if cfg.weight_high_internal != 0:

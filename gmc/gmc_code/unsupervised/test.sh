@@ -1,6 +1,3 @@
-# 의문. 왜 model_train.epoch=10이 안먹힐까? experiment에서 통재하는 시드만 먹히는 느낌임.
-# experiment.model_train_config.epoch ㄱㄱ?
-
 # for seed in 0
 # do
 # CUDA_VISIBLE_DEVICES=7 python main_unsupervised.py \

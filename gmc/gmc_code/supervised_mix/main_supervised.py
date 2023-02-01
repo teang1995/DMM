@@ -1,4 +1,3 @@
-import wandb
 import os
 import torch
 import sacred
@@ -385,7 +384,6 @@ def embedding_analysis(_config, _run):
         vis_array = np.array(vis_tensor.cpu()); del vis_tensor
         vis_emb = UMAP(n_components=2, random_state=exp_cfg["seed"]).fit_transform(vis_array); del vis_array
     else:
-        wandb.log({f'align':s_align, 'unif_p':s_punif, 'unif_j':s_junif})
         import sys
         sys.exit()
 
@@ -407,7 +405,6 @@ def embedding_analysis(_config, _run):
     ax.axes.xaxis.set_visible(False)
     ax.axes.yaxis.set_visible(False)
     plt.savefig(f'{log_dir_path("results_vis")}/{mod_n}_{vis_flag}.png', dpi=285)
-    wandb.log({f'align':s_align, 'unif_p':s_punif, 'unif_j':s_junif, 'plot':wandb.Image(plt)})
     plt.clf()
     #! -----------------------------------------
 
@@ -422,10 +419,6 @@ def main(_config, _run):
     if obs_mod == [0,2]: mod_n = 'TV'
     if obs_mod == [1,2]: mod_n = 'AV'
     if obs_mod == [0,1,2]: mod_n = 'TAV'
-
-    wandb.init(project=_config["experiment"]["wb_proj"]) 
-    wandb.config.update(_config)
-    wandb.run.name = _config["model"]["model"] + '_' + mod_n + '_' + _config["experiment"]["vis"]
 
     # Run experiment
     if _config["experiment"]["stage"] == "train_model":

@@ -2,8 +2,6 @@ from tqdm import tqdm
 from pytorch_lightning import LightningModule
 from gmc_code.supervised_mix.modules.trainers.model_evaluation_metrics import *
 import pdb
-import wandb
-
 
 PERFORMANCE_GOAL = {'mae_T':0.7081,'corr_T':0.5814,'fscore_T':0.7800,'acc_T':0.7801,
                     'mae_A':0.8296,'corr_A':0.2741,'fscore_A':0.6787,'acc_A':0.6635,
@@ -88,7 +86,6 @@ class ModelEvaluation(LightningModule):
                     elif self.scenario == 'mosi':
                         eval_mosi(results, truths, self.sacred_logger, True, self.model_name, scen, self.seed)
             tot_win = mae_win_count + corr_win_count + fscore_win_count + acc_win_count
-            wandb.log({'mean_mae':np.mean(entire_mae), 'mean_corr':np.mean(entire_corr), 'mean_fscore':np.mean(entire_fscore), 'mean_acc':np.mean(entire_acc), 'tot_win':tot_win})
         else:
             results = []
             truths = []

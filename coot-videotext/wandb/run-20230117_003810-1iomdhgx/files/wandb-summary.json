@@ -1,1 +1,0 @@
-{"epoch": 0, "_timestamp": 1673915917, "_runtime": 27, "_step": 32, "tot_loss": 0.20883528888225555, "cc_loss": 0.043077096343040466, "contr_loss": 0.1657581925392151, "_wandb": {"runtime": 28}}

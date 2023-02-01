@@ -14,8 +14,6 @@ def mhd():
     # Dataset parameters
     batch_size = 512
     num_workers = 8
-
-    # Training Hyperparameters (디폴트는 100인데, 논문에 50에폭이라 나와있음.)
     epochs = 100
     learning_rate = 1e-3
     snapshot = 25

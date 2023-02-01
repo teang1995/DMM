@@ -51,7 +51,7 @@ class RetrievalDataPointTuple(typext.TypedNamedTuple):
     sent_num: int
     sent_feat_list: List[th.Tensor]  # shapes (num_tokens_sent, text_feat_dim)
     sent_feat_len_list: List[int]
-    vid_duration: float # yongtaek
+    vid_duration: float
 
     # shape tests for tensors
     _shapes_dict = {
@@ -83,7 +83,7 @@ class RetrievalDataBatchTuple(typext.TypedNamedTuple):
     sent_feat: th.Tensor  # shapes (total_num_sents, max_num_feat_sent, text_feat_dim) dtype float
     sent_feat_mask: th.Tensor  # shapes (total_num_sents, max_num_feat_sent) dtype bool
     sent_feat_len: th.Tensor  # shapes (total_num_sents) dtype long
-    vid_duration: th.Tensor # yongtaek
+    vid_duration: th.Tensor
 
     # shape tests for tensors
     _shapes_dict = {
@@ -161,7 +161,6 @@ class RetrievalDataset(th_data.Dataset):
         expansions = 0
         num_segments = 0
 
-        # add duration_list - yongtaek
         self.duration_list = []
         for key, data_key in zip(self.keys, self.data_keys):
             # add all original metadata of the video
@@ -174,8 +173,6 @@ class RetrievalDataset(th_data.Dataset):
 
             # loop segments, calculate segment start and stop frames
             duration_sec = self.meta[key]["duration_sec"]
-            
-            # append duration to duration_list - yongtaek
             self.duration_list.append(duration_sec)
             
             fps = num_frames / duration_sec
@@ -284,8 +281,6 @@ class RetrievalDataset(th_data.Dataset):
         key = self.keys[item]
         data_key = self.meta[key]["data_key"]
         vid_dict = self.meta[key]
-        
-        # return vid_dur at __getitem__ yongtaek
         vid_duration = self.duration_list[item]
 
         # load number of clips and sentences (currently 1-1 correspondence)
@@ -445,8 +440,6 @@ class RetrievalDataset(th_data.Dataset):
 
         # read list of list of sentence lengths (number of features for each sentence in each paragraph)
         list_sent_feat_len_list = [d.sent_feat_len_list for d in data_batch]
-
-        # yongtaek
         list_vid_duration = [d.vid_duration for d in data_batch]
         # get length of longest sentence in all paragraphs
         sent_feat_max_len = int(np.max([np.max(len_single) for len_single in list_sent_feat_len_list]))
@@ -474,8 +467,6 @@ class RetrievalDataset(th_data.Dataset):
                 pointer += sent_cap_len_item
         # convert stored lengths to tensor
         sent_feat_len = th.Tensor(sent_feat_len_list).long()
-
-        # yongtaek
         vid_duration = th.Tensor(list_vid_duration)
 
         ret = RetrievalDataBatchTuple(

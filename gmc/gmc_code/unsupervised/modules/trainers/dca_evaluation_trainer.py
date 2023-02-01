@@ -94,7 +94,7 @@ class DCAEvaluator(LightningModule):
             hdbscan_config,
             geomCA_config,
             exp_loggers,
-            #version=exp_loggers.version, # LOGGER로 바꾸기
+            #version=exp_loggers.version,
         )
 
         # Evaluate DCA

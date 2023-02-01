@@ -18,7 +18,6 @@ from torch.cuda.amp import autocast
 from torch.nn import functional as F
 from torch.utils import data
 from tqdm import tqdm
-import wandb
 from coot import model_retrieval
 from coot.configs_retrieval import (
     CootMetersConst as CMeters, ExperimentTypesConst, RetrievalConfig, RetrievalTrainerState)
@@ -249,16 +248,8 @@ class RetrievalTrainer(trainer_base.BaseTrainer):
         """
         self.hook_pre_train()  # pre-training hook: time book-keeping etc.
         self.steps_per_epoch = len(train_loader)  # save length of epoch
-        wandb.init(project="COOT", entity='yongtaek-lim')
-        if self.is_baseline:
-            is_baseline = 'base'
-        else:
-            is_baseline = 'ours'
-        wandb.run.name = f'{is_baseline}-{self.cfg.random_seed}'
-        wandb.config.update(self.cfg)
         # ---------- Epoch Loop ----------
         for _epoch in range(self.state.current_epoch, self.cfg.train.num_epochs):
-            wandb.log({"epoch":_epoch})
             if self.check_early_stop():
                 break
             self.hook_pre_train_epoch()  # pre-epoch hook: set models to train, time book-keeping
@@ -292,7 +283,6 @@ class RetrievalTrainer(trainer_base.BaseTrainer):
                             contr_loss = self.compute_total_ce_loss(visual_data, text_data)
                         cc_loss = self.compute_cyclecons_loss(visual_data, text_data)
                         loss = contr_loss + cc_loss
-                        wandb.log({"tot_loss":loss,"cc_loss":cc_loss,"contr_loss":contr_loss})
                     self.hook_post_forward_step_timer()  # hook for step timing
                 # ----------- our method -----------
                 else:
@@ -333,9 +323,6 @@ class RetrievalTrainer(trainer_base.BaseTrainer):
                             contr_loss = self.compute_total_ce_loss(visual_data, text_data)
                         cc_loss = self.compute_cyclecons_loss(visual_data, text_data)
                         loss = contr_loss + cc_loss +contr_loss_mixed*(_epoch/(_epoch+30))
-                        # pdb.set_trace()
-                        wandb.log({"tot_loss":loss,"cc_loss":cc_loss,"contr_loss":contr_loss})
-                        #if _epoch > 10 : loss += contr_loss_mixed
 
                     self.hook_post_forward_step_timer()  # hook for step timing
 
@@ -368,8 +355,6 @@ class RetrievalTrainer(trainer_base.BaseTrainer):
 
                 # run validation, collect video and clip retrieval metrics
                 _val_loss, _val_score, is_best, _metrics = self.validate_epoch(val_loader, val_clips=val_clips)
-                wandb.log({"_val_loss":_val_loss})
-                #wandb.log(_metrics[0])
 
             # post-epoch hook: scheduler, save checkpoint, time bookkeeping, feed tensorboard
             self.hook_post_train_and_val_epoch(do_val, is_best)

@@ -5,7 +5,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import accuracy_score, f1_score
 import os
-import wandb
+
 
 def weighted_accuracy(test_preds_emo, test_truth_emo):
     true_label = (test_truth_emo > 0)
@@ -40,7 +40,7 @@ def eval_mosei(results, truths, logger, exclude_zero=False, vis_filename='defaul
     binary_preds = (test_preds[non_zeros] > 0)
     acc = accuracy_score(binary_truth, binary_preds)
     
-    wandb.log({f'mae_{mod_n}':mae,f'corr_{mod_n}':corr,f'fscore_{mod_n}':f_score,f'acc_{mod_n}':acc})
+
 
     print(vis_filename, seed, mod, mae, corr, f_score, acc, sep=',', file=out)
     # print("Seed: ", seed, file=out)

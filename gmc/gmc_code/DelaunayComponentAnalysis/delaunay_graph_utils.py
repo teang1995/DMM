@@ -40,8 +40,8 @@ def _approximate_Delaunay_edges(
     )
     if not os.path.isfile(unfiltered_Delaunay_edges_filepath):
         os_output = os.system(
-            "/disk/changdae/gmc/gmc_code/DelaunayComponentAnalysis/approximate_Delaunay_graph {0} --nrays {1} --out {2} --out_dist {3}".format(
-                "/disk/changdae/gmc/gmc_code/unsupervised/evaluation/gmc_mhd/log_0/results_dca_evaluation/joint_m0/logs",
+            "/path_to_root/gmc/gmc_code/DelaunayComponentAnalysis/approximate_Delaunay_graph {0} --nrays {1} --out {2} --out_dist {3}".format(
+                "/path_to_root/gmc/gmc_code/unsupervised/evaluation/gmc_mhd/log_0/results_dca_evaluation/joint_m0/logs",
                 #input_array_filepath,
                 #os.path.join(root, input_array_filepath),
                 graph_params.T,
@@ -52,7 +52,7 @@ def _approximate_Delaunay_edges(
         )
         if os_output != 0:
             raise ValueError(
-                "Executable file /disk/changdae/gmc/gmc_code/DelaunayComponentAnalysis/approximate_Delaunay_graph not working. Forgotten to change ownership?"
+                "Executable file /path_to_root/gmc/gmc_code/DelaunayComponentAnalysis/approximate_Delaunay_graph not working. Forgotten to change ownership?"
             )
 
 

@@ -37,7 +37,7 @@ torch==1.7.1
 torchaudio==0.7.0a0+a853dff
 torchvision==0.8.2
 tqdm==4.54.1
-transformers==4.1.1
+transformers==4.30.0
 typed-ast==1.4.1
 typing-extensions==3.7.4.3
 urllib3==1.26.2
